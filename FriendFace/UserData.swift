@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable, Codable {    
+struct UserData: Identifiable, Codable {    
     let id: UUID
     let isActive: Bool
     let name: String
