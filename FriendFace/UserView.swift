@@ -33,6 +33,10 @@ struct UserView: View {
                 Text(user.address)
             }
             
+            Section("About") {
+                Text(user.about)
+            }
+            
             Section("They like") {
                 ForEach(user.tags, id: \.self) { tag in
                     Text(tag)
@@ -49,10 +53,6 @@ struct UserView: View {
                             .foregroundColor(.primary)
                     }
                 }
-            }
-            
-            Section("About") {
-                Text(user.about)
             }
         }
         .preferredColorScheme(.dark)
