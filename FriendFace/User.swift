@@ -18,4 +18,13 @@ struct User: Identifiable, Codable {
 //    let registered: Date
     let tags: [String]
     let friends: [Friend]
+    
+    var titleName: String {
+        var emoji = "⚪️"
+        if isActive {
+            emoji = "🟢"
+        }
+        
+        return "\(name) \(emoji)"
+    }
 }
