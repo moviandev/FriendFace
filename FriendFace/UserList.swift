@@ -8,12 +8,35 @@
 import SwiftUI
 
 struct UserList: View {
+    @State private var users = [User]()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(users) { user in
+                    /*@START_MENU_TOKEN@*/Text(user.name)/*@END_MENU_TOKEN@*/
+                }
+            }
+            .onAppear {
+                Task {
+                    await fetchUserData()
+                }
+            }
+        }
     }
     
-    func fetchUserData() {
+    func fetchUserData() async {
+        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
         
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+                        
+            let decodedUser = try JSONDecoder().decode([User].self, from: data)
+            
+            users = decodedUser
+        } catch {
+            fatalError("\(error.localizedDescription)")
+        }
     }
 }
 
