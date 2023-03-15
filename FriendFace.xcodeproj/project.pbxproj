@@ -13,7 +13,7 @@
 		BBBF3B9629C01866000149A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBBF3B9529C01866000149A3 /* Preview Assets.xcassets */; };
 		BBBF3B9D29C01993000149A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3B9C29C01993000149A3 /* User.swift */; };
 		BBBF3BA129C01E5C000149A3 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3BA029C01E5C000149A3 /* Friend.swift */; };
-		BBBF3BA329C01EE9000149A3 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3BA229C01EE9000149A3 /* UserList.swift */; };
+		BBBF3BA329C01EE9000149A3 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3BA229C01EE9000149A3 /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +24,7 @@
 		BBBF3B9529C01866000149A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBBF3B9C29C01993000149A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BBBF3BA029C01E5C000149A3 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		BBBF3BA229C01EE9000149A3 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		BBBF3BA229C01EE9000149A3 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 				BBBF3B8E29C01865000149A3 /* FriendFaceApp.swift */,
 				BBBF3B9029C01865000149A3 /* ContentView.swift */,
 				BBBF3B9C29C01993000149A3 /* User.swift */,
-				BBBF3BA229C01EE9000149A3 /* UserList.swift */,
+				BBBF3BA229C01EE9000149A3 /* UserView.swift */,
 				BBBF3BA029C01E5C000149A3 /* Friend.swift */,
 				BBBF3B9229C01866000149A3 /* Assets.xcassets */,
 				BBBF3B9429C01866000149A3 /* Preview Content */,
@@ -146,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBBF3BA329C01EE9000149A3 /* UserList.swift in Sources */,
+				BBBF3BA329C01EE9000149A3 /* UserView.swift in Sources */,
 				BBBF3B9129C01865000149A3 /* ContentView.swift in Sources */,
 				BBBF3B8F29C01865000149A3 /* FriendFaceApp.swift in Sources */,
 				BBBF3B9D29C01993000149A3 /* User.swift in Sources */,
