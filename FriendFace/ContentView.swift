@@ -15,26 +15,26 @@ struct ContentView: View {
             List {
                 ForEach(users) { user in
                     NavigationLink {
-                        Text("Test")
+                        UserView(user: user, users: users)
                     } label: {
-                        HStack {
-                            Text(user.name)
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            
-                            Text(user.age, format: .number)
-                                .font(.headline)
-                                .foregroundColor(.primary.opacity(0.5))
-                            
-                            Spacer()
-                            Spacer()
-
-                            Circle()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(user.isActive ? .green.opacity(0.8) : .gray.opacity(0.5))
+                            HStack {
+                                Text(user.name)
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                
+                                Text(user.age, format: .number)
+                                    .font(.headline)
+                                    .foregroundColor(.primary.opacity(0.5))
+                                
+                                Spacer()
+                                Spacer()
+                                
+                                Circle()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundColor(user.isActive ? .green.opacity(0.7) : .gray.opacity(0.5))
+                            }
+                            .padding()
                         }
-                        .padding()
-                    }
                 }
                 .navigationTitle("FriendFace")
             }
@@ -52,8 +52,11 @@ struct ContentView: View {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-                        
-            let decodedUser = try JSONDecoder().decode([User].self, from: data)
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            let decodedUser = try decoder.decode([User].self, from: data)
             
             users = decodedUser
         } catch {
