@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    @FetchRequest(sortDescriptors: []) var cachedFriends: FetchedResults<CachedFriend>
+    
     @State private var users = [User]()
     
     var body: some View {
