@@ -46,45 +46,13 @@ struct ContentView: View {
             .onAppear {
                 Task {
                     await fetchUserData()
-                    await MainActor.run {
-                        for user in users {
-                            var newUser = CachedUser(context: moc)
-                            newUser.name = user.name
-                            newUser.company = user.company
-                            newUser.registered = user.registered
-                            newUser.address = user.address
-                            newUser.id = user.id
-                            newUser.email = user.email
-                            newUser.isActive = user.isActive
-                            newUser.age = Int16(user.age)
-                            newUser.about = user.about
-                            
-                            var friends = Set<CachedFriend>()
-                            
-                            for friend in user.friends {
-                                var newFriend = CachedFriend(context: moc)
-                                
-                                newFriend.name = friend.name
-                                newFriend.id = friend.id
-                                
-                                friends.insert(newFriend)
-                            }
-                            
-                            newUser.addToCachedFriends(friends as NSSet)
-                            
-                            if moc.hasChanges {
-                                try! moc.save()
-                            }
-                            
-                        }
-                    }
                 }
             }
         }
     }
     
     func fetchUserData() async {
-        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
+        let url = URL(string: "https://www.hackingwithswift.com/smples/friendface.json")!
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -95,9 +63,48 @@ struct ContentView: View {
             let decodedUser = try decoder.decode([User].self, from: data)
             
             users = decodedUser
+            
+            if users.count > 0 {
+                await saveOnCoreData()
+            }
+            
         } catch {            
             for user in cachedUsers {
                 users.append(user.convertedCachedUserToUser)
+            }
+        }
+    }
+    
+    func saveOnCoreData() async {
+        await MainActor.run {
+            for user in users {
+                let newUser = CachedUser(context: moc)
+                newUser.name = user.name
+                newUser.company = user.company
+                newUser.registered = user.registered
+                newUser.address = user.address
+                newUser.id = user.id
+                newUser.email = user.email
+                newUser.isActive = user.isActive
+                newUser.age = Int16(user.age)
+                newUser.about = user.about
+                
+                var friends = Set<CachedFriend>()
+                
+                for friend in user.friends {
+                    let newFriend = CachedFriend(context: moc)
+                    
+                    newFriend.name = friend.name
+                    newFriend.id = friend.id
+                    
+                    friends.insert(newFriend)
+                }
+                
+                newUser.addToCachedFriends(friends as NSSet)
+            }
+            
+            if moc.hasChanges {
+                try! moc.save()
             }
         }
     }
