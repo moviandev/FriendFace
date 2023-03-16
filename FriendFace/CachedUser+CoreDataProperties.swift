@@ -32,20 +32,12 @@ extension CachedUser {
         id ?? UUID()
     }
     
-    public var wrappedIsActive: Bool {
-        isActive ?? false
-    }
-    
     public var wrappedName: String {
         name ?? "Unknown"
     }
     
     public var wrappedCompany: String {
         company ?? "Unknown"
-    }
-    
-    public var wrappedAge: Int {
-        age != nil ? Int(age) : 0
     }
     
     public var wrappedEmail: String {
@@ -65,15 +57,25 @@ extension CachedUser {
     }
     
     public var wrappedTags: [String] {
-        tags != nil ? tags.componentsSeparatedByString(",") : []
+        tags?.components(separatedBy: ",") ?? []
     }
     
     public var wrappedFriends: [CachedFriend] {
         let set = cachedFriends as? Set<CachedFriend> ?? []
         
-        set.sorted {
+        return set.sorted {
             $0.wrappedName < $1.wrappedName
         }
+    }
+    
+    var convertedCachedUserToUser: User {
+        var friends = [Friend]()
+        
+        for friend in wrappedFriends {
+            friends.append(Friend(id: friend.wrappedId, name: friend.wrappedName))
+        }
+        
+        return User(id: wrappedId, isActive: isActive, name: wrappedName, company: wrappedCompany, age: Int(age), email: wrappedEmail, address: wrappedAddress, about: wrappedAbout, registered: wrappedRegistered, tags: wrappedTags, friends: friends)
     }
 }
 
