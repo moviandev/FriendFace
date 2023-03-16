@@ -5,6 +5,7 @@
 //  Created by Matheus Viana on 13/03/23.
 //
 
+import Foundation
 import SwiftUI
 
 struct ContentView: View {
@@ -46,6 +47,38 @@ struct ContentView: View {
             .onAppear {
                 Task {
                     await fetchUserData()
+                    await MainActor.run {
+                        for user in users {
+                            var newUser = CachedUser(context: moc)
+                            newUser.name = user.name
+                            newUser.company = user.company
+                            newUser.registered = user.registered
+                            newUser.address = user.address
+                            newUser.id = user.id
+                            newUser.email = user.email
+                            newUser.isActive = user.isActive
+                            newUser.age = Int16(user.age)
+                            newUser.about = user.about
+                            
+                            var friends = Set<CachedFriend>()
+                            
+                            for friend in user.friends {
+                                var newFriend = CachedFriend(context: moc)
+                                
+                                newFriend.name = friend.name
+                                newFriend.id = friend.id
+                                
+                                friends.insert(newFriend)
+                            }
+                            
+                            newUser.addToCachedFriends(friends as NSSet)
+                            
+                            if moc.hasChanges {
+                                try! moc.save()
+                            }
+                            
+                        }
+                    }
                 }
             }
         }
