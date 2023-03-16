@@ -11,7 +11,6 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
-    @FetchRequest(sortDescriptors: []) var cachedFriends: FetchedResults<CachedFriend>
     
     @State private var users = [User]()
     
@@ -96,8 +95,10 @@ struct ContentView: View {
             let decodedUser = try decoder.decode([User].self, from: data)
             
             users = decodedUser
-        } catch {
-            fatalError("\(error.localizedDescription)")
+        } catch {            
+            for user in cachedUsers {
+                users.append(user.convertedCachedUserToUser)
+            }
         }
     }
 }
