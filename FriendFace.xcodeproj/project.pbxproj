@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB85847129C2BA6800C6D999 /* FriendFace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB85846F29C2BA6800C6D999 /* FriendFace.xcdatamodeld */; };
+		BB85847329C2BCBD00C6D999 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB85847229C2BCBD00C6D999 /* DataController.swift */; };
 		BBBF3B8F29C01865000149A3 /* FriendFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3B8E29C01865000149A3 /* FriendFaceApp.swift */; };
 		BBBF3B9129C01865000149A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBF3B9029C01865000149A3 /* ContentView.swift */; };
 		BBBF3B9329C01866000149A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBBF3B9229C01866000149A3 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		BB85847029C2BA6800C6D999 /* FriendFace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendFace.xcdatamodel; sourceTree = "<group>"; };
+		BB85847229C2BCBD00C6D999 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BBBF3B8B29C01865000149A3 /* FriendFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBBF3B8E29C01865000149A3 /* FriendFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFaceApp.swift; sourceTree = "<group>"; };
 		BBBF3B9029C01865000149A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				BBBF3B9C29C01993000149A3 /* User.swift */,
 				BBBF3BA229C01EE9000149A3 /* UserView.swift */,
 				BBBF3BA029C01E5C000149A3 /* Friend.swift */,
+				BB85847229C2BCBD00C6D999 /* DataController.swift */,
 				BB85846F29C2BA6800C6D999 /* FriendFace.xcdatamodeld */,
 				BBBF3B9229C01866000149A3 /* Assets.xcassets */,
 				BBBF3B9429C01866000149A3 /* Preview Content */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB85847329C2BCBD00C6D999 /* DataController.swift in Sources */,
 				BB85847129C2BA6800C6D999 /* FriendFace.xcdatamodeld in Sources */,
 				BBBF3BA329C01EE9000149A3 /* UserView.swift in Sources */,
 				BBBF3B9129C01865000149A3 /* ContentView.swift in Sources */,
